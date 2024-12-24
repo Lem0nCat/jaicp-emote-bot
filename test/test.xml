@@ -1,0 +1,79 @@
+<test>
+    
+    <test-case id="TextInput">
+        <q>/start</q>
+        <timeoutReply targetState="/GoodBye" interval="300"/>
+        <a state="/Hello"/>
+        <a state="/Hello"/>
+        <q>qwe</q>
+        <timeoutReply targetState="/GoodBye" interval="300"/>
+        <a state="/CatchAll"/>
+        <q>😴</q>
+        <timeoutReply targetState="/GoodBye" interval="300"/>
+        <a state="/CatchAll"/>
+    </test-case>
+    
+    <text-case id="TestEmotes">
+        <q>/start</q>
+        <timeoutReply targetState="/GoodBye" interval="300"/>
+        <a state="/Hello"/>
+        <a state="/Hello"/>
+        
+        <q>😀</q>
+        <timeoutReply targetState="/GoodBye" interval="300"/>
+        <a state="/Happy"/>
+        <context var="session">
+            {
+                "prevEmotion": "happy"
+            }
+        </context>
+        
+        <q>😂</q>
+        <timeoutReply targetState="/GoodBye" interval="300"/>
+        <a state="/Happy"/>
+        <context var="session">
+            {
+                "prevEmotion": "happy"
+            }
+        </context>
+        
+        <q>😤</q>
+        <timeoutReply targetState="/GoodBye" interval="300"/>
+        <a state="/Angry"/>
+        <context var="session">
+            {
+                "prevEmotion": "angry"
+            }
+        </context>
+        
+        <q>😫</q>
+        <timeoutReply targetState="/GoodBye" interval="300"/>
+        <a state="/Sad"/>
+        <context var="session">
+            {
+                "prevEmotion": "happy"
+            }
+        </context>
+        
+    </text-case>
+    
+    <test-case id="TestTimeout">
+        <q>/start</q>
+        <timeoutReply targetState="/GoodBye" interval="300"/>
+        <a state="/Hello"/>
+        <a state="/Hello"/>
+        
+        <q>🤯</q>
+        <timeoutReply targetState="/GoodBye" interval="300"/>
+        <a state="/Angry"/>
+        <context var="session">
+            {
+                "prevEmotion": "angry"
+            }
+        </context>
+        <timeout/>
+        <a state="/GoodBye"/>
+        
+    </test-case>
+    
+</test>    
